@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h3 class="py-4">Welcome!</h3>
+        </div>
+        <br>
+        <div class="card-deck">
+            <!-- REGISTRO -->
+            <div class="card bg-light mb-3 border-light shadow rounded" style="max-width: 180rem;">
+                <h3 class="card-header">Register</h3>
+                <div class="card-body">
+                    {% if messages %}
+                    <ul>
+                        {% for message in messages %}
+                        <li>{{message}}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+
+                    <form action="registro" method="POST">
+                        {% csrf_token %}
+                        <input hidden name="rol" id="rol" value="1">
+                        <fieldset >
+                            <label for="name" class="mt-2">Name:</label>
+                            <input type="text" class="form-control" name="name" id="name" placeholder="Enter your name">
+                        </fieldset>
+                        <fieldset>
+                            <label for="username" class="mt-2">Username:</label>
+                            <input type="text" class="form-control" name="username" id="username" placeholder="Enter a username">
+                        </fieldset>
+                        <fieldset>
+                            <label for="password" class="mt-2">Password:</label>
+                            <input type="password" class="form-control" name="password" id="password" placeholder="Enter a password">
+                            <small class="text-muted pl-1">*Password should be at least 8 characters</small><br>
+                        </fieldset>
+                        <fieldset>
+                            <label for="password2" class="mt-2">Confirm PW:</label>
+                            <input type="password" class="form-control" name="password2" id="password2" placeholder="Confirm password">
+                        </fieldset>
+                        <div class="d-flex justify-content-end">
+                            <button class="btn btn-info mt-3">Register</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- LOGIN -->
+            <div class="card bg-light mb-3 border-light shadow rounded" style="max-width: 180rem;">
+                <h3 class="card-header">Login</h3>
+                <div class="card-body">
+                    <form action="inicio" method="POST"> <!-- metodo: inicio -->
+                        {% csrf_token %}
+                        <label for="username">Username:</label>
+                        <fieldset>
+                            <input type="text" class="form-control" name="username" id="username" placeholder="Enter your username">
+                        </fieldset>
+                        <label for="password3" class="mt-2">Password:</label>
+                        <fieldset>
+                            <input type="password" class="form-control" name="password" id="password3" placeholder="Enter your password">
+                        </fieldset>
+                        <div class="d-flex justify-content-end">
+                            <button class="btn btn-info mt-3">Login</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
